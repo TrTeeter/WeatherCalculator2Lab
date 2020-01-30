@@ -6,32 +6,53 @@ namespace WeatherCalculator2
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("### Weather Calculator 2");
+            Console.WriteLine("Weather Calculator 2");
 
-            int temperature;
+            int temp;
             int windSpeed;
             double windChill;
+            int rh;
+            double hi;
             string input = "";
 
             // Get the temperature from the user
-            Console.WriteLine("Enter the temperature");
+            Console.WriteLine("Enter the Temperature");
 
             input = Console.ReadLine();
 
-            temperature = int.Parse(input);
+            temp = int.Parse(input);
 
-            // Get the windspeed from the user
-            Console.WriteLine("Enter the wind speed");
 
-            input = Console.ReadLine();
+            if (temp < 50)
+            { 
+                Console.WriteLine("Enter the wind speed");
 
-            windSpeed = int.Parse(input);
+                input = Console.ReadLine();
 
-            // Calculate the wind chill
+                windSpeed = int.Parse(input);
 
-            windChill = 35.74 + (0.6125 * temperature) - 35.75 * Math.Pow(windSpeed, 0.16) + 0.4275 * temperature * Math.Pow(windSpeed, 0.16);
+                // Calculate the wind chill
 
-            Console.WriteLine("The wind chill is " + windChill);
+                windChill = 35.74 + (0.6125 * temp) - 35.75 * Math.Pow(windSpeed, 0.16) + 0.4275 * temp * Math.Pow(windSpeed, 0.16);
+
+                Console.WriteLine("The wind chill is " + windChill);
+            }
+            else
+            {
+                Console.WriteLine("Enter the Relative Humidity");
+
+                input = Console.ReadLine();
+
+                rh = int.Parse(input);
+
+                hi = .5 * (temp + 61 + ((temp - 68) * 1.2) + (rh * .094));
+
+                Console.WriteLine("The Heat Index is " + hi);
+            }
+
+
+
         }
+
     }
 }
